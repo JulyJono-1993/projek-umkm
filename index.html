@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Udang Goreng Lezat - UMKM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TULISAN BERJALAN (MARQUEE) -->
+  <div class="marquee">
+    <p>🎉 Selamat datang di Toko Udang Goreng Lezat! Promo Hari Ini: Beli 3 Gratis Ongkir! 📦</p>
+  </div>
+
+  <div class="container">
+    <h1 class="title">Udang Goreng Lezat</h1>
+    <p class="subtitle">Camilan Gurih, Renyah, dan Kaya Rasa – Produk UMKM Lokal</p>
+
+    <!-- GALLERY SLIDER -->
+    <div class="slider">
+      <img id="slider-img" src="img/header.jpg" alt="Udang Goreng">
+    </div>
+
+    <div class="description">
+      <p>
+        Dibuat dari udang segar, digoreng renyah dengan bumbu khas. Cocok untuk camilan, oleh-oleh, atau lauk sehari-hari.
+      </p>
+      <ul>
+        <li>✔️ 100% Halal dan Tanpa Pengawet</li>
+        <li>✔️ Kemas 250g & 500g</li>
+        <li>✔️ Dikirim langsung dari dapur UMKM</li>
+      </ul>
+    </div>
+
+    <!-- FORM PEMESANAN -->
+    <h2>Form Pemesanan</h2>
+    <form id="orderForm">
+      <label for="nama">Nama Anda:</label>
+      <input type="text" id="nama" name="nama" required>
+
+      <label for="jumlah">Jumlah Pesanan (Pcs):</label>
+      <input type="number" id="jumlah" name="jumlah" min="1" required>
+
+      <label for="catatan">Catatan Tambahan:</label>
+      <textarea id="catatan" name="catatan" rows="3"></textarea>
+
+      <button type="submit">Kirim via WhatsApp</button>
+    </form>
+
+    <p class="footer">Dukung UMKM Lokal 🇮🇩 | WhatsApp: 0812-3456-7890</p>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Slider otomatis
+    const images = [
+      "img/1.jpg",
+      "img/2.jpg",
+      "img/3.jpg"
+    ];
+    let current = 0;
+    setInterval(() => {
+      current = (current + 1) % images.length;
+      document.getElementById('slider-img').src = images[current];
+    }, 3000);
+
+    // Kirim ke WhatsApp
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nama = document.getElementById('nama').value;
+      const jumlah = document.getElementById('jumlah').value;
+      const catatan = document.getElementById('catatan').value;
+
+      const pesan = `Halo! Saya ingin memesan Udang Goreng.%0ANama: ${nama}%0AJumlah: ${jumlah} pcs%0ACatatan: ${catatan}`;
+      const nomorWA = '6281234567890'; // ganti dengan no WA kamu
+      const url = `https://wa.me/${nomorWA}?text=${pesan}`;
+
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
